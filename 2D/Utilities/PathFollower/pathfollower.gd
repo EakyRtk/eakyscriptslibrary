@@ -18,7 +18,7 @@ signal follow_started
 ##Second PathFollower2D to be place the node to
 @export var second_path : PathFollower2D
 ##If the path going to put its node to 'second_path' at the end
-@export var auto_advence : bool = false
+@export var auto_advance : bool = false
 ##At what threshold the path will count as it ended.
 @export var path_end_threshold : float = 10.0
 
@@ -64,7 +64,7 @@ func _process(delta: float) -> void:
 	_path_follow.progress += follow_speed * delta
 	if _path_follow.progress > self.curve.get_baked_length() - 10: 
 		path_ended.emit()
-		if auto_advence:
+		if auto_advance:
 			place_on_other_path()
 
 #region Setters
