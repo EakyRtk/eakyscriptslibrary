@@ -1,6 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3seamdw5o6wt"]
+[gd_scene load_steps=6 format=3 uid="uid://b3seamdw5o6wt"]
 
 [ext_resource type="Script" uid="uid://bkxxyt58vi737" path="res://test.gd" id="1_37kl0"]
+[ext_resource type="Script" uid="uid://b3qgbdpco5tfs" path="res://2D/Utilities/PathFollower/pathfollower.gd" id="2_8uh7m"]
+[ext_resource type="Texture2D" uid="uid://dyi3lv12vvh5i" path="res://icon.svg" id="3_6uqi0"]
+
+[sub_resource type="Curve2D" id="Curve2D_6uqi0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 799, 142, 0, 0, 0, 0, 798, 468)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_ppyta"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 476, 119, 0, 0, 0, 0, 459, 438, 0, 0, 0, 0, 276, 475)
+}
+point_count = 3
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_37kl0")
+
+[node name="PathFollower" type="Path2D" parent="." node_paths=PackedStringArray("target_node", "second_path")]
+position = Vector2(-1, 0)
+curve = SubResource("Curve2D_6uqi0")
+script = ExtResource("2_8uh7m")
+target_node = NodePath("../Icon")
+second_path = NodePath("../PathFollower2D")
+metadata/_custom_type_script = "uid://b3qgbdpco5tfs"
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(348, 296)
+texture = ExtResource("3_6uqi0")
+
+[node name="PathFollower2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ppyta")
+script = ExtResource("2_8uh7m")
+start_follow_on_start = false
+metadata/_custom_type_script = "uid://b3qgbdpco5tfs"
+
+[connection signal="path_ended" from="PathFollower" to="PathFollower" method="place_on_other_path"]
