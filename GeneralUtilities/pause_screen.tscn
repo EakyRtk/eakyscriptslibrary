@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://cndmg3afl3s4w"]
+
+[ext_resource type="Theme" uid="uid://cener7afl4fxf" path="res://GeneralUtilities/theme.tres" id="1_1nfjx"]
+
+[node name="PauseScreen" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1nfjx")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="ColorRect" type="Panel" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 88
+
+[node name="MenuItems" type="VBoxContainer" parent="Control/MarginContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ResumeButton" type="Button" parent="Control/MarginContainer/CenterContainer/HBoxContainer/MenuItems"]
+layout_mode = 2
+text = "RESUME"
+
+[node name="SettingsButton" type="Button" parent="Control/MarginContainer/CenterContainer/HBoxContainer/MenuItems"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="MenuButton" type="Button" parent="Control/MarginContainer/CenterContainer/HBoxContainer/MenuItems"]
+layout_mode = 2
+text = "RETURN TO MENU"
+
+[node name="ExitButton" type="Button" parent="Control/MarginContainer/CenterContainer/HBoxContainer/MenuItems"]
+layout_mode = 2
+text = "EXIT TO DESKTOP"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/MarginContainer/CenterContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
